@@ -1,4 +1,4 @@
-module top(
+module miket6000_top(
     input [7:0] io_in,
     output [7:0] io_out,
     );
