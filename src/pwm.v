@@ -9,7 +9,6 @@ module pwm (
   reg [7:0]c_count, r_count;
   
   initial begin
-    c_count = 0;
     r_count = 0;
   end
   
