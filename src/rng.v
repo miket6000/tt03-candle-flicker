@@ -10,7 +10,6 @@ module lfsr(
   
   initial begin
     r_lfsr = 16'hbeef;
-    c_lfsr = 16'hbeef;
   end
 
   always @(posedge clk) begin
