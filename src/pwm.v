@@ -2,21 +2,29 @@
 module pwm (
   input clk,
   input reset,
+  input enable,
   input [7:0]value,
   output out );
   
-  reg [7:0]count;
+  reg [7:0]c_count, r_count;
   
   initial begin
-    count = 0;
+    c_count = 0;
+    r_count = 0;
   end
   
-  assign out = (value > count);
-
+  assign out = (value > r_count);
+  
   always @(posedge clk) begin
-    count <= count + 1;
+    r_count <= c_count;
+  end
+
+  always @(*) begin
+    c_count = r_count;
     if (reset) begin
-      count <= 0;
+      c_count = 0;
+    end else if (enable) begin
+      c_count = r_count + 1;
     end
   end
 endmodule

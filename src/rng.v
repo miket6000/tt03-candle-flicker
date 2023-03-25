@@ -2,7 +2,7 @@
 module lfsr(
   input clk,
   input reset,
-  input run,
+  input enable,
   output [3:0]out);
   
   reg [15:0]r_lfsr, c_lfsr;
@@ -21,7 +21,7 @@ module lfsr(
     c_lfsr = r_lfsr;
     if (reset) begin
       c_lfsr = 16'hbeef;
-    end else if (run) begin
+    end else if (enable) begin
       c_lfsr = {r_lfsr[14:0], r_lfsr[10] ^ r_lfsr[12] ^ r_lfsr[13] ^ r_lfsr[15]};
     end
   end
